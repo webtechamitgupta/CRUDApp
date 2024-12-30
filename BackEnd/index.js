@@ -1,7 +1,9 @@
 const express = require("express")
 const {Client} = require("pg");
-const app = express()
+const app = express();
+const cors = require("cors");
 app.use(express.json())
+app.use(cors());
 
 
 async function getClient(){
@@ -12,7 +14,7 @@ async function getClient(){
     return client;
 }
 app.post("/addNote",async function(req,res){
-    //console.log(req.body);
+    console.log(req.body);
     try {
         const note = req.body;
     const client = await getClient();
